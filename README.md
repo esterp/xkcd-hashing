@@ -18,10 +18,10 @@ Wait and hope you see Yay!! and the random data that produces a hash that is clo
 
 TODO list
 + Scrape the current MIT score
-+ Automatically POST the data when found
++ ~~Automatically POST the data when found~~
 + Use the random bytes, right now the bit differences calculated for these are not the same as those calculated on the xkcd website for some reason.
 + Autodeployment on Amazon EC2
-+ multithreading?
++ ~~multithreading?~~
 
 I might do some of these eventually, if psets magically get done...
 
