@@ -7,7 +7,7 @@ Search for data that hashes to the correct goal output hash. This script will ra
 	sudo ./quickstart.sh
 	source venv/bin/activate
 
-    python3.2 xkcd-hashing.py
+    python3 xkcd-hashing.py
 
 Wait and hope you see Yay!! and the random data that produces a hash that is close to the goal hash.
 
