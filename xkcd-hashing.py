@@ -41,7 +41,6 @@ def run_worker(do_submit=True, time_limit=None):
 	return i
 
 def main():
-	run_worker()
 	cpus = multiprocessing.cpu_count()
 	pool = multiprocessing.Pool(cpus, init_worker)
 	for i in range(cpus):
