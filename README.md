@@ -2,26 +2,25 @@
 
 Search for data that hashes to the correct goal output hash. This script will randomly Skein1024 hash data and check the digest output to determine how many bits are different from the goal output. Whenever a "best" guess is found, it is submitted to the xkcd site, assuming your network connection is working.
 
+Wait and hope you find a guess with a small diff (i.e. closer to the goal hash).
+
 
 # Quickstart 
 
-## Ubuntu
+## Ubuntu/OS X (With Homebrew)
 
 	sudo ./quickstart.sh
 	source venv/bin/activate
 
-    python3 xkcd-hashing.py
+    python3 main.py
 
     Note: Quickstart script uses apt-get.
 
-## Windows/OS X
+## Windows/OS X (Without Homebrew)
 
-	Be sure you have Python 3 and pyskein. This version does not use gmpy so it may be easier for non-Linux users to setup. Note that its performance is not as great though.
+Be sure you have Python 3.0+ and [PySkein](http://pythonhosted.org/pyskein/).
 
-	python3 otheros.py
-
-
-Wait and hope you find a guess with a small diff (i.e. closer to the goal hash).
+	python3 main.py
 
 # Speed Test
 
