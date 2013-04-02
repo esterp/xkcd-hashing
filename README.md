@@ -4,15 +4,8 @@ Search for data that hashes to the correct goal output hash. This script will ra
 
 # Quickstart
 
-	sudo apt-get install build-essential
-	sudo apt-get install python3.2    # Installed by default on Ubunutu 12.04
-	sudo apt-get install python3-dev
-	sudo apt-get install python-virtualenv
-	sudo apt-get install libgmp3-dev
-
-    virtualenv venv --python=python3.2
-    source venv/bin/activate
-    pip install -r requirements.txt
+	sudo ./quickstart.sh
+	source venv/bin/activate
 
     python3.2 xkcd-hashing.py
 
