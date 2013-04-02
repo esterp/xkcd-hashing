@@ -19,9 +19,11 @@ def submit(word):
 	binarydata = data.encode('ascii')
 	urllib.request.urlopen(url, binarydata)
 	
-def run_worker():
+def run_worker(do_submit=True, time_limit=None):
 	best = float('inf')
 	r = random.SystemRandom()
+	t = time.time()
+	i = 0
 	while True:
 		guess = hex(r.getrandbits(RANDOM_BIT_LEN))[2:]
 		encoded = guess.encode('utf-8')
@@ -29,9 +31,14 @@ def run_worker():
 		diff = bin(digest ^ TARGET).count('1')
 		if diff < best:
 			best = diff
-			submit(guess)
+			if do_submit:
+				submit(guess)
 			print('Found new best input with diff [%.3d]: \"%s\"' %
 				(diff, guess))
+		i += 1
+		if time_limit and time.time() - t > time_limit:
+			break
+	return i
 
 def main():
 	run_worker()
@@ -52,4 +59,9 @@ def main():
 		pool.join()
 
 if __name__ == '__main__':
-	main()
+	import sys
+	if len(sys.argv) > 1 and sys.argv[1] == 'time':
+		iters = run_worker(do_submit=False, time_limit=1)
+		print('Processed', iters, 'guesses in 1 second')
+	else:
+		main()
