@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
-import multiprocessing, signal, time, skein, gmpy, random, string, urllib.request, urllib.parse
+import multiprocessing, signal, time, skein, random, string, urllib.request, urllib.parse
+try:
+	import gmpy
+except ImportError:
+	gmpy = None
 
 TARGETSTR = '5b4da95f5fa08280fc9879df44f418c8f9f12ba424b7757de02bbdfbae0d4c4fd' + \
 	'f9317c80cc5fe04c6429073466cf29706b8c25999ddd2f6540d4475cc977b87f4757be' + \
 	'023f19b8f4035d7722886b78869826de916a79cf9c94cc79cd4347d24b567aa3e2390' + \
 	'a573a373a48a5e676640c79cc70197e1c5e7f902fb53ca1858b6'
 
-TARGET = gmpy.mpz(TARGETSTR, 16)
+if gmpy is not None:
+	TARGET = gmpy.mpz(TARGETSTR, 16)
+else:
+	TARGET = int(TARGET, 16)
 
 RANDOM_BIT_LEN = 512
 
@@ -25,9 +32,14 @@ def run_worker(do_submit=True, time_limit=None):
 	t = time.time()
 	i = 0
 	while True:
-		encoded = gmpy.digits(guess, 62).encode('ascii')
-		digest = gmpy.mpz(skein.skein1024(encoded).digest()[::-1] + b'\0', 256)
-		diff = gmpy.hamdist(digest, TARGET)
+		if gmpy is not None:
+			encoded = gmpy.digits(guess, 62).encode('ascii')
+			digest = gmpy.mpz(skein.skein1024(encoded).digest()[::-1] + b'\0', 256)
+			diff = gmpy.hamdist(digest, TARGET)
+		else: # fallback implementation
+			encoded = hex(guess)[2:].encode('ascii')
+			digest = int(skein.skein1024(encoded).hexdigest(), 16)
+			diff = bin(digest ^ TARGET).count('1')
 		if diff < best:
 			best = diff
 			if do_submit:

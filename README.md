@@ -4,17 +4,10 @@ Search for data that hashes to the correct goal output hash. This script will ra
 
 # Quickstart
 
-	sudo apt-get install build-essential
-	sudo apt-get install python3.2    # Installed by default on Ubunutu 12.04
-	sudo apt-get install python3-dev
-	sudo apt-get install python-virtualenv
-	sudo apt-get install libgmp3-dev
+	sudo ./quickstart.sh
+	source venv/bin/activate
 
-    virtualenv venv --python=python3.2
-    source venv/bin/activate
-    pip install -r requirements.txt
-
-    python3.2 xkcd-hashing.py
+    python3 xkcd-hashing.py
 
 Wait and hope you find a guess with a small diff (i.e. closer to the goal hash).
 
