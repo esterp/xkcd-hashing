@@ -13,7 +13,7 @@ TARGETSTR = '5b4da95f5fa08280fc9879df44f418c8f9f12ba424b7757de02bbdfbae0d4c4fd' 
 if gmpy is not None:
 	TARGET = gmpy.mpz(TARGETSTR, 16)
 else:
-	TARGET = int(TARGET, 16)
+	TARGET = int(TARGETSTR, 16)
 
 RANDOM_BIT_LEN = 512
 
