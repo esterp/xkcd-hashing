@@ -14,8 +14,6 @@ Wait and hope you find a guess with a small diff (i.e. closer to the goal hash).
 
     python3 main.py
 
-    Note: Quickstart script uses apt-get.
-
 ## Windows/OS X (Without Homebrew)
 
 Be sure you have Python 3.0+ and [PySkein](http://pythonhosted.org/pyskein/).
