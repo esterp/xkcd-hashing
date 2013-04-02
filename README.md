@@ -22,7 +22,7 @@ Be sure you have Python 3.0+ and [PySkein](http://pythonhosted.org/pyskein/).
 
 # Speed Test
 
-	python3 xkcd-hashing.py time   # Outputs # hash/s
+	python3 main.py time   // Outputs # hash/s
 
 
 
